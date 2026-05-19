@@ -5,3 +5,6 @@ from fastapi.templating import Jinja2Templates
 
 from model import *
 
+app = FastAPI()
+
+app
