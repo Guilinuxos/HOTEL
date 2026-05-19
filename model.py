@@ -78,7 +78,7 @@ def delete_hospede(id):
     cn.close()
 
 # ─────────
-# HÓSPEDES
+# quartos
 # ─────────
 
 def consulta_quartos():
