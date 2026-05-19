@@ -142,3 +142,71 @@ async def deletar_quarto(id:int):
 # ────────────
 # RESERVAS
 # ────────────
+
+
+@app.get("/reservas", response_class=HTMLResponse)
+async def listar_reservas(request: Request):
+    reservas = consulta_reservas_ativas()
+
+    return templates.TemplateResponse(
+        request=request,
+        name="reservas.html",
+        context={"reservas": reservas}
+    )
+
+@app.get("/reserva/{id}", response_class=HTMLResponse)
+async def visualizar_reserva(request: Request, id: int):
+    reserva = consulta_reserva_id(id)
+
+    return templates.TemplateResponse(
+        request=request,
+        name="reserva_detalhe.html",
+        context={"reserva": reserva}
+    )
+
+@app.get("/add_reserva", response_class=HTMLResponse)
+async def pagina_add_reserva(request: Request):
+    hospedes = consulta_hospedes()
+    quartos = consulta_quartos()
+
+    return templates.TemplateResponse(
+        request=request,
+        name="add_reserva.html",
+        context={
+            "hospedes": hospedes,
+            "quartos": quartos
+        }
+    )
+
+@app.get("/edit_reserva/{id}", response_class=HTMLResponse)
+async def pagina_edit_reserva(request: Request, id: int):
+    reserva = consulta_reserva_id(id)
+    hospedes = consulta_hospedes()
+    quartos = consulta_quartos()
+
+    return templates.TemplateResponse(
+        request=request,
+        name="edit_reserva.html",
+        context={
+            "reserva": reserva,
+            "hospedes": hospedes,
+            "quartos": quartos
+        }
+    )
+
+@app.post("/edit_reserva/{id}")
+async def editar_reserva(
+    id: int,
+    hospede_id: int = Form(...),
+    quarto_id: int = Form(...),
+    data_entrada: str = Form(...),
+    data_saida: str = Form(...)
+):
+    update_reserva(id, hospede_id, quarto_id, data_entrada, data_saida)
+    return RedirectResponse(url="/reservas", status_code=303)
+
+
+@app.get("/delete_reserva/{id}")
+async def deletar_reserva(id: int):
+    delete_reserva(id)
+    return RedirectResponse(url="/reservas", status_code=303)
