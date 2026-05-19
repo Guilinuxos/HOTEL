@@ -147,4 +147,7 @@ def delete_quarto(id):
     cursor.execute("DELETE FROM quartos WHERE id = %s", (id,))
     cursor.close()
     cn.commit()
-    
+
+# ─────────
+# RESERVAS
+# ───────── 
