@@ -105,3 +105,46 @@ def consulta_quarto_id(id):
 
     return request
 
+def add_quarto(numero, tipo, valor_diaria, status):
+    cn = connection()
+    cursor = cn.cursor(dictionary=True)
+
+    query = """
+            INSERT INTO
+                quartos (numero, tipo, valor_diaria, status)
+            VALUES
+                (%s, %s, %s, %s)
+            """
+    cursor.execute(query, (numero, tipo, valor_diaria, status))
+    cn.commit()
+
+    cn.close()
+    cursor.close()
+
+def udpate_quarto(id, numero, tipo, valor_diaria, status):
+    cn = connection()
+    cursor = cn.cursor(dictionary=True)
+
+    query = """
+            UDPATE quartos
+                set numero = %s,
+                tipo = %s,
+                valor_diaria = %s,
+                status = %s
+            WHERE id = %s
+            """
+    
+    cursor.execute(query, (numero, tipo, valor_diaria, status, id))
+    cn.commit()
+
+    cursor.close()
+    cn.close()
+
+def delete_quarto(id):
+    cn = connection()
+    cursor = cn.cursor(dictionary=True)
+
+    cursor.execute("DELETE FROM quartos WHERE id = %s", (id,))
+    cursor.close()
+    cn.commit()
+    
