@@ -149,19 +149,35 @@ def update_quarto(id, numero, tipo, valor_diaria, status):
     cn.close()
 
 def delete_quarto(id):
-    cn = connection()
-    cursor = cn.cursor(dictionary=True)
+    cn = None
+    cursor = None
+    try:
+        cn = connection()
+        cursor = cn.cursor(dictionary=True)
 
-    query = """
-        DELETE FROM quartos
-        WHERE id = %s
-    """
+        query = """
+            DELETE FROM quartos
+            WHERE id = %s
+        """
 
-    cursor.execute(query, (id,))
-    cn.commit()
+        reser_query = """
+            SELECT * FROM reservas
+            WHERE quarto_id = %s
+        """
 
-    cursor.close()
-    cn.close()
+        cursor.execute(reser_query, (id,))
+        verify_reser = cursor.fetchone()
+
+        if verify_reser == None:
+            cursor.execute(query, (id,))
+            cn.commit()
+            return True
+        else:
+            return False
+
+    finally:
+        cursor.close()
+        cn.close()
 
 # ─────────
 # RESERVAS
