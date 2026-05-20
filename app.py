@@ -148,9 +148,9 @@ async def editar_quarto(
     update_quarto(id, numero, tipo, valor_diaria, status)
     return RedirectResponse(url="/quartos", status_code=303)
 
-@app.get("/delete_quarto/{id}")
+@app.post("/delete_quarto/{id}")
 async def deletar_quarto(id:int):
-    deletar_quarto(id)
+    delete_quarto(id)
     return RedirectResponse(url="/quartos", status_code=303)
 
 # ────────────
