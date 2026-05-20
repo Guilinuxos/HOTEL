@@ -145,7 +145,7 @@ async def editar_quarto(
     valor_diaria: float = Form(...),
     status: str = Form(...)
 ):
-    udpate_quarto(id, numero, tipo, valor_diaria, status)
+    update_quarto(id, numero, tipo, valor_diaria, status)
     return RedirectResponse(url="/quartos", status_code=303)
 
 @app.get("/delete_quarto/{id}")
