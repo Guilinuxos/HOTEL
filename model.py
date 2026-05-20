@@ -129,12 +129,12 @@ def add_quarto(numero, tipo, valor_diaria, status):
     cn.close()
     cursor.close()
 
-def udpate_quarto(id, numero, tipo, valor_diaria, status):
+def update_quarto(id, numero, tipo, valor_diaria, status):
     cn = connection()
     cursor = cn.cursor(dictionary=True)
 
     query = """
-            UDPATE quartos
+            UPDATE quartos
                 set numero = %s,
                 tipo = %s,
                 valor_diaria = %s,
@@ -152,9 +152,16 @@ def delete_quarto(id):
     cn = connection()
     cursor = cn.cursor(dictionary=True)
 
-    cursor.execute("DELETE FROM quartos WHERE id = %s", (id,))
-    cursor.close()
+    query = """
+        DELETE FROM quartos
+        WHERE id = %s
+    """
+
+    cursor.execute(query, (id,))
     cn.commit()
+
+    cursor.close()
+    cn.close()
 
 # ─────────
 # RESERVAS
