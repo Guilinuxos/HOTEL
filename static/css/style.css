@@ -149,9 +149,21 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.reservas-recentes form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .reservas-recentes h2 {
     color: #0b1f3a;
     margin-bottom: 20px;
+}
+
+.text_adjusting {
+    color: #0b1f3a;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 table {
@@ -511,4 +523,18 @@ table tr:hover {
 
 .btn-salvar-quarto:hover {
     background-color: #16345d;
+}
+
+select {
+    display: flex;
+    height: 100%;
+    width: auto;
+}
+
+.position_adjusting {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
 }
