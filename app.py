@@ -36,12 +36,14 @@ async def home(request: Request):
 # ────────────
 @app.get("/hospedes", response_class=HTMLResponse)
 async def list_hospedes(request: Request):
-    hospedes = consulta_hospedes()
+    hospedes_consult = consulta_hospedes()
 
     return templates.TemplateResponse(
         request = request,
         name = "hospedes.html",
-        context={}
+        context={
+            "hospedes": hospedes_consult
+        }
     )
 
 @app.get("/add_hospede", response_class=HTMLResponse)
@@ -95,6 +97,18 @@ async def deletar_hospede(id: int):
 # ────────────
 # QUARTOS
 # ────────────
+
+@app.get("/quartos", response_class=HTMLResponse)
+async def list_quartos(request: Request):
+    quartos_consult = consulta_quartos()
+
+    return templates.TemplateResponse(
+        request = request,
+        name = "quartos.html",
+        context={
+            "quartos": quartos_consult
+        }
+    )
 
 @app.get("/add_quarto", response_class=HTMLResponse)
 async def add_quarto(request: Request):
@@ -209,4 +223,14 @@ async def editar_reserva(
 @app.get("/delete_reserva/{id}")
 async def deletar_reserva(id: int):
     delete_reserva(id)
+    return RedirectResponse(url="/reservas", status_code=303)
+
+@app.post("/add_reserva")
+async def adicionar_reserva(
+    hospede_id: int = Form(...),
+    quarto_id: int = Form(...),
+    data_entrada: str = Form(...),
+    data_saida: str = Form(...)
+):
+    add_reserva(hospede_id, quarto_id, data_entrada, data_saida)
     return RedirectResponse(url="/reservas", status_code=303)

@@ -12,9 +12,6 @@
 <body>
 
     <div class="sidebar">
-        <div class="logo_sidebar">
-            <h2>Hotel</h2>
-        </div>
         <nav>
             <a href="/"><i class="fa-solid fa-arrow-left"></i> 
                 Voltar
@@ -54,8 +51,8 @@
                 {% for reserva in reservas %}
                 <tr>
                     <td>{{ reserva.id }}</td>
-                    <td>{{ reserva.nome_hospede }}</td>
-                    <td>{{ reserva.numero_quarto }}</td>
+                    <td>{{ reserva.hospede }}</td>
+                    <td>{{ reserva.quarto }}</td>
                     <td>{{ reserva.data_entrada }}</td>
                     <td>{{ reserva.data_saida }}</td>
                     <td>

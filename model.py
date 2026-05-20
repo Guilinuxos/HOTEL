@@ -65,14 +65,22 @@ def delete_hospede(id):
     cn = connection()
     cursor = cn.cursor(dictionary=True)
 
-    query = """
+    reser_query = """
+            DELETE FROM
+                reservas
+            WHERE
+                hospede_id = %s
+                """
+
+    hosp_query = """
             DELETE FROM
                 hospedes
             WHERE
                 id = %s
             """
-
-    cursor.execute(query, (id,))
+    
+    cursor.execute(reser_query, (id,))
+    cursor.execute(hosp_query, (id,))
     cn.commit() 
     cursor.close()
     cn.close()
@@ -157,13 +165,17 @@ def consulta_reservas_ativas():
     cursor = cn.cursor(dictionary=True)
 
     query = """
-        SELECT r.*,
-               h.nome   AS nome_hospede,
-               q.numero AS numero_quarto
-        FROM reservas r
-        JOIN hospedes h ON r.hospede_id = h.id
-        JOIN quartos  q ON r.quarto_id  = q.id
-        WHERE r.data_saida >= CURDATE()
+        SELECT reservas.id, 
+        hospedes.nome AS hospede, 
+        quartos.numero AS quarto,
+        reservas.data_entrada,
+        reservas.data_saida
+        
+        FROM reservas
+        JOIN hospedes ON 
+            reservas.hospede_id = hospedes.id
+        JOIN quartos ON 
+            reservas.quarto_id = quartos.id
     """
 
     cursor.execute(query)
