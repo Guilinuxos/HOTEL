@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Form, Request
+from fastapi import FastAPI, Form, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -148,9 +148,19 @@ async def editar_quarto(
     update_quarto(id, numero, tipo, valor_diaria, status)
     return RedirectResponse(url="/quartos", status_code=303)
 
-@app.get("/delete_quarto/{id}")
+@app.post("/delete_quarto/{id}")
 async def deletar_quarto(id:int):
-    deletar_quarto(id)
+    del_func = delete_quarto(id)
+    if not del_func:
+        return HTMLResponse(
+            """
+            <script>
+                alert('Não é possível excluir o quarto, pois ele possui reservas ativas.');
+                window.location.href = '/quartos'; //Serve para redirecionar de volta pra página de quartos depois do alerta
+            </script>
+            """,
+            status_code=400
+        )
     return RedirectResponse(url="/quartos", status_code=303)
 
 # ────────────
