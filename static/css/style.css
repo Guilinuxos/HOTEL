@@ -13,7 +13,7 @@ body {
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #0b1a3a;
+    background-color: #5c0805;
     position: fixed;
     left: 0;
     top: 0;
@@ -52,7 +52,7 @@ body {
 }
 
 .sidebar nav a:hover {
-    background-color: #16345d;
+    background-color: #ebebeb44;
     transform: translateX(5px);
 }
 
@@ -129,12 +129,12 @@ body {
 
 .bloco .icon i {
     font-size: 30px;
-    color: #0b1f3a;
+    color: #5c0805;
 }
 
 .bloco h2 {
     font-size: 35px;
-    color: #0b1f3a;
+    color: #5c0805;
 }
 
 .bloco p {
@@ -173,7 +173,7 @@ table {
 }
 
 table th {
-    background-color: #0b1f3a;
+    background-color: #5c0805;
 
     color: white;
 
@@ -202,7 +202,7 @@ table tr:hover {
     width: 150px;
     height: 50px;
     border-radius: 15px;
-    background-color: #0b1f3a;
+    background-color: #5c0805;
     color: white;
     text-decoration: none;
     gap: 10px;
@@ -221,7 +221,7 @@ table tr:hover {
 }
 
 .btn-editar {
-    background-color: #0d6efd;
+    background-color: #c5130d;
     color: white;
     text-decoration: none;
     width: 40px;
@@ -234,13 +234,13 @@ table tr:hover {
 }
 
 .btn-editar:hover {
-    background-color: #0b5ed7;
+    background-color: #c4342f;
 }
 
 /* BOTÃO EXCLUIR */
 
 .btn-excluir {
-    background-color: #dc3545;
+    background-color: #c5130d;
     color: white;
     text-decoration: none;
     width: 40px;
@@ -253,7 +253,7 @@ table tr:hover {
 }
 
 .btn-excluir:hover {
-    background-color: #bb2d3b;
+    background-color: #c4342f;
 }
 
 .container_formulario {
@@ -277,7 +277,7 @@ table tr:hover {
 }
 
 .grupo_input label {
-    color: #0b1f3a;
+    color: #5c0805;
     font-size: 16px;
     font-weight: bold;
 }
@@ -294,7 +294,7 @@ table tr:hover {
 }
 
 .grupo_input input:focus {
-    border-color: #0b1f3a;
+    border-color: #5c0805;
     box-shadow: 0px 0px 8px rgba(11, 31, 58, 0.2);
 }
 
@@ -310,7 +310,7 @@ table tr:hover {
 /* BOTÃO CANCELAR */
 
 .botao_cancelar {
-    background-color: #dc3545;
+    background-color: #c5130d;
     color: white;
     text-decoration: none;
     padding: 14px 25px;
@@ -320,11 +320,11 @@ table tr:hover {
 }
 
 .botao_cancelar:hover {
-    background-color: #bb2d3b;
+    background-color: #c4342f;
 }
 
 .botao_salvar {
-    background-color: #0b1f3a;
+    background-color: #c5130d;
     color: white;
     border: none;
     padding: 14px 25px;
@@ -338,7 +338,7 @@ table tr:hover {
 }
 
 .botao_salvar:hover {
-    background-color: #16345d;
+    background-color: #c4342f;
 }
 
 /* Listagem dos quartos */
@@ -356,7 +356,7 @@ table tr:hover {
 }
 
 .btn-novo-quarto {
-    background-color: #0b1f3a;
+    background-color: #5c0805;
     color: white;
     text-decoration: none;
     padding: 10px 18px;
@@ -367,7 +367,7 @@ table tr:hover {
 }
 
 .btn-novo-quarto:hover {
-    background-color: #16345d;
+    background-color: #c4342f;
 }
 
 .container-tabela-quartos {
@@ -394,7 +394,7 @@ table tr:hover {
 
 .btn-editar-quarto {
     background-color: #e3f0ff;
-    color: #0b1f3a;
+    color: #5c0805;
 }
 
 .btn-editar-quarto:hover {
@@ -457,13 +457,13 @@ table tr:hover {
 }
 
 .header-form-quarto h2 {
-    color: #0b1f3a;
+    color: #5c0805;
     font-size: 22px;
 }
 
 .btn-voltar-quarto {
     text-decoration: none;
-    color: #0b1f3a;
+    color: #5c0805;
     font-size: 14px;
     font-weight: bold;
     padding: 8px 16px;
@@ -484,7 +484,7 @@ table tr:hover {
 }
 
 .grupo-input-quarto label {
-    color: #0b1f3a;
+    color: #5c0805;
     font-size: 14px;
     font-weight: bold;
 }
@@ -503,14 +503,14 @@ table tr:hover {
 
 .grupo-input-quarto input:focus,
 .grupo-input-quarto select:focus {
-    border-color: #0b1f3a;
+    border-color: #5c0805;
     background-color: white;
 }
 
 .btn-salvar-quarto {
     width: 100%;
     padding: 14px;
-    background-color: #0b1f3a;
+    background-color: #5c0805;
     color: white;
     border: none;
     border-radius: 10px;
@@ -522,7 +522,7 @@ table tr:hover {
 }
 
 .btn-salvar-quarto:hover {
-    background-color: #16345d;
+    background-color: #c4342f;
 }
 
 select {
