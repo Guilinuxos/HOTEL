@@ -200,4 +200,3 @@ Para parar a execução do servidor:
 ```text
 CTRL + C
 ```
-````
